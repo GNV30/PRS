@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────
+# каталоги проекта
+build/
+.vscode/
+PRS*
+
+# ── Autotools / Libtool artefacts ────────────
+# Object / library files
+*.o
+*.lo
+*.la
+*.lai
+*.a
+*.so
+*.Plo
+*.out
+
+# Generated dirs
+**/.libs/
+**/.deps/
+
+# configure output
+**/config.status
+**/config.log
+**/libtool
+
+# Сгенерённые «config.h»-подобные
+**/*_config.h
