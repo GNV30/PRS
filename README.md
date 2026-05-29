@@ -1,52 +1,13 @@
-### How to build docker image
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/arminbiere/kissat.svg?branch=master)](https://travis-ci.org/arminbiere/kissat)
 
-```bash
-cd docker
-./build_PRS_images.sh
-```
+The Kissat SAT Solver
+=====================
 
-### How to build
+Kissat is a "keep it simple and clean bare metal SAT solver" written in C.
+It is a port of CaDiCaL back to C with improved data structures, better
+scheduling of inprocessing and optimized algorithms and implementation.
 
-```bash
-make clean; make
-```
+Coincidentally "kissat" also means "cats" in Finnish.
 
-### How to use
-
-```bash
-./PRS <instance> [config=config_filename] [--option=param]
-```
-
-For example, 
-
-```bash
-./PRS ./test.cnf --clause_sharing=1 --DCE=1 --preprocessor=1 --nThreads=32 --cutoff=5000
-```
-
-### Parameters and Options
-
-instance: input CNF 
-
-nThreads: the number of workers in PRS
-
-cutoff: the wall time for SAT solving
-
-clause_sharing: whether use clause sharing (1: enable; 0: disable) 
-
-preprocessor: whether use preprocessing (1: enable; 0: disable)
-profile: level of Kissat profiling output (0-4)
-
-### Benchmarking solver
-
-Для запуска серии измерений по папке с десятью CNF-файлами можно использовать
-скрипт `benchmark_solver.py`:
-
-```bash
-python3 benchmark_solver.py ./PRS ./cnfs_nossum_md5_preimage_26r
-```
-
-В каталоге `benchmarks` будет создан отчёт со средним временем решения и
-усреднёнными значениями `self seconds` для пяти наиболее затратных функций по
-данным `gprof`.
-Для профилирования каждая итерация вызывает `gprof PRS gmon.out | head`, что
-позволяет сразу получить верхние строки отчёта без дополнительной обработки.
+Run `./configure && make test` to configure, build and test in `build`.
